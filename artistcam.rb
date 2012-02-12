@@ -5,8 +5,14 @@ sessionIds = Hash.new()
 trackUserIsListeningTo = Hash.new("Not available")
 
 get '/:artistURI/session' do
+    while sessionIds[params[:artistURI]+"_lock"]
+        sleep 0.1
+    end
+    
     if !sessionIds[params[:artistURI]]
+        sessionIds[params[:artistURI]+"_lock"] = "yay"
         sessionIds[params[:artistURI]] = create_session()
+        sessionIds[params[:artistURI]+"_lock"] = false
     end
     sessionIds[params[:artistURI]].to_s
 end
