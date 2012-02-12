@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'opentok'
 
 sessionIds = Hash.new()
 
@@ -16,9 +17,11 @@ end
 # Opentok
 
 def create_session()
-    "14685d1ac5907f4a2814fed28294d3f797f34955"
+    opentok = OpenTok::OpenTokSDK.new ENV['OPENTOK_KEY'], ENV['OPENTOK_SECRET']
+    session = opentok.create_session "127.0.0.1"
 end
 
 def generate_token(sessionID)
-    "devtoken"
+    opentok = OpenTok::OpenTokSDK.new ENV['OPENTOK_KEY'], ENV['OPENTOK_SECRET']
+    token = opentok.generate_token :session_id => @session
 end
