@@ -16,9 +16,9 @@ end
 # Opentok
 
 def create_session()
-    rand(100)
+    "14685d1ac5907f4a2814fed28294d3f797f34955"
 end
 
 def generate_token(sessionID)
-    "Not Implemented, sessionID: #{sessionID}"
+    "devtoken"
 end
