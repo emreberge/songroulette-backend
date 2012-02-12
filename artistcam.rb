@@ -4,14 +4,14 @@ require 'opentok'
 sessionIds = Hash.new()
 trackUserIsListeningTo = Hash.new("Not available")
 
-get '/sessionID/:artistURI' do
+get '/:artistURI/session' do
     if !sessionIds[params[:artistURI]]
         sessionIds[params[:artistURI]] = create_session()
     end
     sessionIds[params[:artistURI]].to_s
 end
 
-get '/token/:sessionID' do
+get '/:sessionID/token' do
     generate_token(params[:sessionID])
 end
 
