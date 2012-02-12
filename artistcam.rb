@@ -2,6 +2,7 @@ require 'sinatra'
 require 'opentok'
 
 sessionIds = Hash.new()
+trackUserIsListeningTo = Hash.new("Not available")
 
 get '/sessionID/:artistURI' do
     if !sessionIds[params[:artistURI]]
@@ -12,6 +13,14 @@ end
 
 get '/token/:sessionID' do
     generate_token(params[:sessionID])
+end
+
+get '/:userID/track' do
+    trackUserIsListeningTo[params[:userID]]
+end
+
+put '/:userID/track/:trackID' do
+    trackUserIsListeningTo[params[:userID]] = params[:trackID]
 end
 
 # Opentok
