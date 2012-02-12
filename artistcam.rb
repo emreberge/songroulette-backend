@@ -1,4 +1,3 @@
-# myapp.rb
 require 'sinatra'
 
 sessionIds = Hash.new()
