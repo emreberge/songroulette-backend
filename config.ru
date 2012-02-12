@@ -1,3 +1,2 @@
-require 'artistcam.rb'
+require './artistcam'
 run Sinatra::Application
-
